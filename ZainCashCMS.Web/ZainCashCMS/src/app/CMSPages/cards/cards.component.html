@@ -1,0 +1,9 @@
+
+
+<app-dynamictable *ngIf="isshow" [PageName]="'Cards'"   [ColoumnOfName]="coloumnofdata" [RowOfData]="AllData" [TotalRecord]="totalrecord" [CurrentPages]="searchModel!.currentPage"
+(sortField)="Sort($event)" (id)="Delete($event)" 
+(searching)="GetSearch($event)" (currentpage)="GetPage($event)" [formFields]="formFields" (SubmitForm)="onCreate($event)" (UpdateForm)="onEdit($event)"
+></app-dynamictable>
+
+
+

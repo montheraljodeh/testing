@@ -1,0 +1,229 @@
+<div class="content-wrapper">
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">User Managemenet</h4>
+    <button type="button" style="margin-left:90%;" class=" btn btn-outline-success mb-4"
+      (click)="modalOpenPrimary(modalPrimary)">
+      Add Record
+    </button>
+    <div class="card">
+      <h5 class="card-header"> User Managemenet List</h5>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>UserName</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="table-border-bottom-0">
+            <tr *ngFor="let item of DataOfUser">
+              <td>{{item.roleName}}</td>
+
+              <td>{{item.userName}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>
+                <a href="javascript:void(0);" (click)="ShowModalUser(modalCreateAuth,'perm',item)"><i
+                    class="ti ti-settings me-1"></i></a>
+
+                <a href="javascript:void(0);" (click)="ShowModalUser(item)"><i class="ti ti-pencil me-1"></i></a>
+                <a href="javascript:void(0);" (click)="onDelete(item.id,item.fullName)"><i
+                    class="ti ti-trash me-1"></i></a>
+
+              </td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<div class="modal-success d-inline-block">
+  <!-- Button trigger modal -->
+  <!-- Modal -->
+  <ng-template #modalPrimary let-modal>
+    <div class="modal-header">
+      <h3 class="modal-title" id="myModalLabel160" *ngIf="!isShowEdit">Add User</h3>
+      <h3 class="modal-title" id="myModalLabel160" *ngIf="isShowEdit">Edit User</h3>
+
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+
+      <form class="form" [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="fillName-name-column">Full Name</label>
+              <input type="text" id="fillName-name-column" class="form-control" placeholder="Full Name"
+                name="fillName-column" formControlName="fullName" />
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="userName-name-column">User Name</label>
+              <input type="text" id="userName-name-column" class="form-control" placeholder="User Name"
+                name="userName-column" formControlName="userName" />
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="password-column">Password</label>
+              <input type="text" id="password-column" class="form-control" placeholder="password" name="password-column"
+                formControlName="password" />
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="country-floating">Language</label>
+              <select id="selectstate" name="selectstate" class="form-control input-value" formControlName="language"
+                placeholder="Select Language">
+                <option vlaue="0" disabled selected>-- Select Language --</option>
+                <option value="2">Arabic</option>
+                <option value="1">English</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="userEmail-column">User Email</label>
+              <input type="text" id="userEmail-column" class="form-control" name="userEmail-column"
+                placeholder="User Email" formControlName="userEmail" />
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="email-id-column">Phone Number</label>
+              <input type="email" id="email-id-column" class="form-control" name="email-id-column"
+                placeholder="Phone Number" formControlName="phoneNumber" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="userEmail-column">Role Name</label>
+              <select id="selectstate" name="selectstate" class="form-control input-value" formControlName="roleName"
+                placeholder="Select Role">
+                <option vlaue="0" disabled selected>-- Select Language --</option>
+                <option *ngFor="let item of allrole" value="{{item.name}}">{{item.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="form-group">
+              <label for="userEmail-column">Upload Image</label>
+              <input type="file" class="form-control" (change)="onFileChange($event)" accept="Image/*" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="email-id-column">About Description</label>
+              <textarea class="form-control" formControlName="aboutDescription">
+
+  </textarea>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-outline-danger" (click)="onClear()">Cancel</button>
+
+          <button type="submit" class="btn btn-outline-success" *ngIf="!isShowEdit" rippleEffect>
+            Save
+          </button>
+          <button type="submit" class="btn btn-outline-success" (click)="modal.close('Accept click')" *ngIf="isShowEdit"
+            rippleEffect>
+            Edit
+          </button>
+
+        </div>
+      </form>
+
+
+    </div>
+
+  </ng-template>
+  <!-- / Modal -->
+</div>
+
+<ng-template #modalCreateAuth let-modal>
+  <div class="modal-header">
+
+
+    <button type="button" class="btn-close btn-pinned" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    <div class="text-center mb-4">
+      <h3 class="mb-2">User Autherization</h3>
+      <p class="text-muted">Updating User Item</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><label><strong>Name:</strong></label> {{singleuser.fullName}}</div>
+      <div class="col-md-6"><label><strong>RoleName:</strong></label> {{singleuser.roleName}}</div>
+    </div>
+    <hr />
+    <div class="row">
+      <h2>User Permission</h2>
+    </div>
+    <div *ngFor="let item of getroledataclaims;">
+      <h5>{{item.pageName}}</h5>
+      <hr />
+      <div *ngFor="let itemof of item.subMenuItems">
+        <h6>{{itemof.pageName}}</h6>
+        <br />
+
+        <div class="row">
+          <div class="col-md-4">
+            <h6>Add</h6>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="customSwitch" style="width: 57px;
+  height: 25px;" value="{{item.id}}" #myInput1 (change)="change(myInput1.checked,myInput1.value,itemof.key,'Add');"
+                [checked]="checkvalue(item.id,itemof.key,'Add')">
+            </div>
+
+          </div>
+          <div class="col-md-4">
+            <h6>Edit</h6>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="customSwitch" style="width: 57px;
+  height: 25px;" value="{{item.id}}" #myInput2 (change)="change(myInput2.checked,myInput2.value,itemof.key,'Edit');"
+                [checked]="checkvalue(item.id,itemof.key,'Edit')">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h6>Delete</h6>
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="customSwitch" style="width: 57px;
+  height: 25px;" value="{{item.id}}" #myInput3 (change)="change(myInput3.checked,myInput3.value,itemof.key,'Delete');"
+                [checked]="checkvalue(item.id,itemof.key,'Delete')">
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+      <br />
+
+
+    </div>
+
+    <button class="btn btn-outline-success" style="float:right;" (click)="updateClaimsBaseUser()">Save</button>
+  </div>
+
+
+</ng-template>

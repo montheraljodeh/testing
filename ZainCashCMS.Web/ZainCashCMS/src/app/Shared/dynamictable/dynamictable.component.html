@@ -1,0 +1,328 @@
+<ngx-spinner></ngx-spinner>
+<p-toast></p-toast>
+
+<div class="content-wrapper">
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">{{PageName}}</h4>
+    <div class="row">
+      <div class="col-md-2" *ngIf="isShowAddDelete">
+        <button class="add-button form-group form-group-sm col-md-12" (click)="open(modalCreate)">
+          <i class="fa-solid fa-plus fa-lg"></i> Add New Record
+        </button>
+      </div>
+
+      <div class="col-md-2">
+
+        <button class="add-button form-group form-group-sm col-md-12" (click)="exportToExcel()">
+          <i class="fa fa-file-excel-o fa-lg"></i>
+          Download As Excel
+        </button>
+
+      </div>
+
+      <div class="col-md-2">
+        <button class="add-button" (click)="Reset()">
+          <i class="fas fa-sync fa-lg"></i> Reset
+        </button>
+      </div>
+
+      <div class="col-md-3" style="margin-left: 300px;">
+
+        <input type="text" class="form-control" placeholder="Please Enter The Search" #searchsingle
+          (change)="GetSingleSearch(searchsingle.value)" />
+        <button type="button" class="btn btn-primary" style="margin-top: -63px; margin-left: 320px;"
+          (click)="GetSingleSearch(searchsingle.value)">
+          <li class="ti ti-search"></li>
+        </button>
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="table-responsive">
+        <p-table #dt1 [value]="RowOfData" class="table" dataKey="id" responsiveLayout="scroll" [rows]="10"
+          [paginator]="false" stateStorage="session" stateKey="statedemo-session">
+          <ng-template pTemplate="header">
+            <tr>
+
+              <th *ngFor="let item of ColoumnOfName" pSortableColumn="{{item.key}}" [hidden]="item.hidden"
+                (click)="SortField(item.key!)">
+                {{item.alias}}
+                <p-sortIcon field="{{item.key}}"></p-sortIcon>
+
+              </th>
+              <th>Action</th>
+            </tr>
+            <tr>
+
+              <th *ngFor="let item of ColoumnOfName" [hidden]="item.hidden">
+
+                <ng-container *ngIf="item.key!.startsWith('created')">
+                  <input pInputText type="date" class="form-control w-full" placeholder="please enter value"
+                    name="listofsearch" #colou (change)="getvalue()">
+
+                </ng-container>
+                <ng-container *ngIf="item.key!.startsWith('is')&& (item.key !=='isEnabled' && item.key !=='isDeleted')">
+                  <select class="form-control" name="listofsearch" #colou (change)="getvalue()">
+                    <option disabled selected></option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </ng-container>
+
+                <ng-container
+                  *ngIf="!item.key!.startsWith('is') && !item.key!.startsWith('created')  && !item.key?.includes('Image') ">
+                  <input pInputText *ngIf="item.filldata===undefined" type="text" class="form-control w-full"
+                    placeholder="please enter value" name="listofsearch" #colou (change)="getvalue()">
+
+                  <select class="form-control" *ngIf="item.filldata!==undefined" name="listofsearch" #colou
+                    (change)="getvalue()">
+                    <option *ngFor="let itemoflist of item.filldata" value="{{itemoflist.value}}">{{itemoflist.label}}
+                    </option>
+
+                  </select>
+
+                </ng-container>
+
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-pjt>
+            <tr>
+              <td *ngFor="let header of ColoumnOfName" [hidden]="header.hidden">
+                <ng-container
+                  *ngIf="header.key !='isEnabled' && header.key !='isAvailable' && header.key !='isDeleted' && header.key !='created' && header.key !='isRedirect' && !header.key?.includes('Image')">
+                  {{getItemValue(pjt,header.key!)}}
+
+                </ng-container>
+                <ng-container *ngIf="header.key=='created'">
+
+                  <span>{{pjt['created']|date}}</span>
+                </ng-container>
+
+                <ng-container *ngIf="header.key?.includes('Image')">
+                  <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                    <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                      class="avatar avatar-xs pull-up" title="CMS">
+                      <img [src]="getItemValue(pjt,header.key!)" />
+                    </li>
+                  </ul>
+                </ng-container>
+                <ng-container
+                  *ngIf="header.key =='isEnabled'  || header.key=='isDeleted' || header.key?.startsWith('is')">
+                  <ng-container *ngIf="header.key=='isEnabled'|| header.key=='isDeleted'">
+                    <ng-container *ngIf="header.key=='isEnabled'">
+                      <span class="text" *ngIf="pjt['isEnabled']==0" style="background: #fe6c6c;color: white;
+                      border-radius: 100px;
+                      width: 40px;
+                      height: 20px;">Not Active</span>
+                      <span class="text text-success" *ngIf="pjt['isEnabled']==1" style="background: #aaf3ae;
+                      border-radius: 100px;
+                      width: 40px;
+                      height: 20px;">Active</span>                    </ng-container>
+                    <ng-container *ngIf="header.key=='isDeleted'">
+                      <span class="text text-danger" *ngIf="pjt[header.key]==1">Not Active</span>
+                      <span class="text text-success" *ngIf="pjt[header.key]==0">Active</span>
+                    </ng-container>
+                  </ng-container>
+
+                  <ng-container
+                    *ngIf="header.key!.startsWith('is')&& (header.key !=='isEnabled' && header.key !=='isDeleted')">
+                    <span class="text text-danger" *ngIf="pjt[header.key!]==false">No</span>
+                    <span class="text text-success" *ngIf="pjt[header.key!]==true">Yes</span>
+                  </ng-container>
+                </ng-container>
+              </td>
+             
+              <td style="width: 330px;">
+                <!-- <a href="javascript:void(0);" (click)="onEdit(modalCreate,pjt)"><i class="ti ti-pencil me-1"></i></a> -->
+                <button *ngIf="isShowEdit"  class="add-button" (click)="onEdit(modalCreate,pjt)" style="width: 100px;">
+                  <i class="ti ti-pencil me-1"></i> Edit
+                </button>
+                <!-- <a href="javascript:void(0);" (click)="GetDelete(pjt['id'])" *ngIf="isShowAddDelete"><i
+                class="ti ti-trash me-1 text-danger"></i></a> -->
+                <button *ngIf="isShowAddDelete" class="add-button" (click)="GetDelete(pjt['id'])"
+                  style="width: 130px;margin-left: 10px;">
+                  <i class="ti ti-trash me-1"></i> Remove
+                </button>
+
+                <a *ngIf="isShowEyeIcon" class="item-edit" (click)="GetChargeLimitVersion(pjt['version'])" >
+                  <i class="fa-sharp fa-regular fa-eye" style="color: #6a6d71;"></i>
+               </a>
+              </td>
+            </tr>
+            <!--(click)="Confirm(modalPrimary,pjt['id'])"-->
+
+
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="4">No Record found.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <div>
+          <div class="card flex justify-content-center">
+            <p-paginator (onPageChange)="onPageChange($event)" [showCurrentPageReport]="true" [first]="first!"
+              [rows]="this.rows" [totalRecords]="TotalRecord-10"></p-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <p-confirmDialog [style]="{width:'40vw'}"> </p-confirmDialog>
+
+  <ng-template #modalCreate let-modal>
+    <div class="modal-header">
+
+
+      <button type="button" class="btn-close btn-pinned" data-bs-dismiss="modal" aria-label="Close"
+        (click)="onCancel()"></button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      <div class="text-center mb-4" *ngIf="!isshowedit">
+        <h3 class="mb-2">Add {{PageName}}</h3>
+        <p class="text-muted">Updating {{PageName}} Item</p>
+      </div>
+      <div class="text-center mb-4" *ngIf="isshowedit">
+        <h3 class="mb-2">Edit {{PageName}}</h3>
+        <p class="text-muted">Updating {{PageName}} Item</p>
+      </div>
+
+
+
+      <form [formGroup]="Form" id="editUserForm" class="row g-3" (ngSubmit)="onSubmit()">
+        <!-- Text Input -->
+
+        <ng-container [ngSwitch]="field.type " *ngFor="let field of formFields">
+          <ng-container *ngIf="field.subProperties?.length ==undefined">
+            <div [ngClass]="{'col-12 col-md-6': field.type !== 'textarea'&& field.class ==null}"
+              [hidden]="field.hidden">
+              <label [ngClass]="{'form-label': field.type !== 'checkbox'}" [for]="field.name!"
+                [hidden]="field.type === 'checkbox' || field.type === 'textarea'">{{ field.label }}</label>
+              <input *ngSwitchCase="'text'" class="form-control" type="text" [name]="field.name!"
+                [formControlName]="field.name!" [placeholder]="field.label" />
+              <input *ngSwitchCase="'number'" class="form-control" type="number" [name]="field.name!"
+                [formControlName]="field.name!" [placeholder]="field.label" />
+              <input *ngSwitchCase="'color'" class="form-control" type="color" [name]="field.name!"
+                [formControlName]="field.name!">
+              <select *ngSwitchCase="'dropdown'" class="form-control" [name]="field.name!"
+                [formControlName]="field.name!">
+
+                <option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</option>
+              </select>
+
+              <div class="from-control" *ngSwitchCase="'pDropdown'">
+                <p-dropdown [options]="field.optionsprimeng" optionLabel="label" optionValue="value"
+                  [formControlName]="field.name!" [style]="{'width':'100%'}" [panelStyle]="{'width':'100%'}"
+                  [readonly]="field.readonly">
+                </p-dropdown>
+              </div>
+              <div class="from-control" *ngSwitchCase="'multidropdown'">
+                <p-multiSelect [options]="field.optionsprimeng" optionLabel="label" [formControlName]="field.name!"
+                  [style]="{'width':'100%'}" [panelStyle]="{'width':'100%'}" [readonly]="field.readonly">
+                </p-multiSelect>
+              </div>
+              <div class="field.class" *ngSwitchCase="'file'">
+                <div class="card">
+                  <div class="card-body">
+                    <img [src]="this.Form.controls[field.name!].value" *ngIf="isshowedit"
+                      style="width: 100px; height: 200px;">
+                    <h4 class="card-title">{{field.label}}</h4>
+                    <h6 class="card-subtitle text-muted">Upload a nice Image 😄</h6>
+                  </div>
+                  <div class="card-body">
+                    <input type="file" class="form-control" accept="Image/*" #image name="{{field.name!}}"
+                      (change)="onFileChange($event,image.name)" readonly="subProp.readonly" />
+                  </div>
+                </div>
+              </div>
+
+              <p-editor *ngSwitchCase="'texteditor'" [formControlName]="field.name!"
+                [style]="{'height':'320px'}"></p-editor>
+
+
+
+              <div class="row" *ngIf="field.isgroup!==undefined">
+                <ng-container *ngFor="let itemof1 of field.isgroup">
+
+                  <div class="{{itemof1.class}}">
+                    <div class="form-check mt-4">
+
+                      <input class="form-check-input" [id]="itemof1.name!" type="checkbox" [name]="itemof1.name!"
+                        [formControlName]="itemof1.name!" readonly="itemof1.readonly" />
+                      <label class="form-check-label" [for]="itemof1.name!">{{ itemof1.label }}</label>
+                    </div>
+                  </div>
+                  <br />
+
+                </ng-container>
+              </div>
+
+              <div class="form-check mt-4" *ngSwitchCase="'checkbox'">
+
+                <input class="form-check-input" [id]="field.name!" type="checkbox" [name]="field.name!"
+                  [formControlName]="field.name!" readonly="subProp.readonly" />
+                <label class="form-check-label" [for]="field.name!">{{ field.label }}</label>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <ng-container *ngIf="field.subProperties?.length !==undefined">
+
+            <ng-container [formGroupName]="field.name!" *ngSwitchCase="'textarea'">
+              <div class="col-12 col-md-6" *ngFor="let subProp of field.subProperties">
+                <label class="form-label" [for]="subProp">{{ subProp.label }}</label>
+                <textarea class="form-control" [name]="subProp" [formControlName]="subProp.name"
+                  [placeholder]="subProp.label" rows="2" [readonly]="subProp.readonly"></textarea>
+              </div>
+            </ng-container>
+            <ng-container [formGroupName]="field.name!" *ngSwitchCase="'text'">
+              <div class="col-12 col-md-6" *ngFor="let subProp of field.subProperties">
+                <label class="form-label" [for]="subProp">{{ subProp.label }}</label>
+                <input class="form-control" [name]="subProp" [formControlName]="subProp.name"
+                  [placeholder]="subProp.label" [readonly]="subProp.readonly" />
+              </div>
+            </ng-container>
+
+            <ng-container [formGroupName]="field.name!" *ngSwitchCase="'texteditor'">
+              <div class="col-12 col-md-6" *ngFor="let subProp of field.subProperties">
+                <label class="form-label" [for]="subProp"> {{ subProp.label}}</label>
+                <p-editor class="form-control" [formControlName]="subProp.name" placeholder="subProp.label"
+                  [readonly]="subProp.readonly" />
+              </div>
+            </ng-container>
+
+          </ng-container>
+
+
+        </ng-container>
+
+
+        <div class="col-12 text-center" *ngIf="isShowAddDelete">
+          <a class="btn btn-outline-danger text text-danger" data-bs-dismiss="modal" aria-label="Close"
+            (click)="onCancel()">
+            Cancel
+          </a>
+
+          <button class="btn btn-outline-success me-sm-3 me-1" style="margin-left: 10px;" *ngIf="isshowedit"
+            type="submit">
+            Edit
+          </button>
+          <button class="btn me-sm-3 me-1" style="margin-left: 10px;" *ngIf="!isshowedit"
+            [ngClass]="{'btn-outline-info':!this.Form.valid,'btn-outline-success':this.Form.valid}"
+            [disabled]="!this.Form.valid" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+
+    </div>
+
+  </ng-template>

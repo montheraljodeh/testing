@@ -1,0 +1,370 @@
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="row">
+                <!-- Website Analytics -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100" style="transform: translate3d(0px, 0, 0);white-space: nowrap">
+
+                        <div class="card-body" style="background-color: #685dd8;
+                                                border-radius: 0.375rem;
+                                                box-shadow: 0 0.25rem 1.125rem rgba(75, 70, 92, 0.1);">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="text-white mb-0 mt-2">Website Analytics</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-9 col-12 order-2 order-md-1">
+                                        <h6 class="text-white mt-0 mt-md-3 mb-3">Traffic</h6>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="d-flex mb-4 align-items-center">
+                                                        <p class="text-white mb-0 fw-semibold me-2 website-analytics-text-bg"
+                                                            style="font-size:11px">{{totalUsers}}</p>
+                                                        <p class="text-white mb-0">
+                                                            Total Users
+                                                        </p>
+                                                    </li>
+                                                    <li class="d-flex align-items-center mb-2">
+                                                        <p class="text-white mb-0 fw-semibold me-2 website-analytics-text-bg"
+                                                            style="font-size:11px">{{newRegistration}}</p>
+                                                        <p class="text-white mb-0">
+                                                            New Register
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-6">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="d-flex mb-4 align-items-center">
+                                                        <p class="text-white mb-0 fw-semibold me-2 website-analytics-text-bg"
+                                                            style="font-size:11px">{{loginUsers}}</p>
+                                                        <p class="text-white mb-0">
+                                                            Total Login Users
+                                                        </p>
+                                                    </li>
+                                                    <li class="d-flex align-items-center mb-2">
+                                                        <p class="text-white mb-0 fw-semibold me-2 website-analytics-text-bg"
+                                                            style="font-size:11px">{{newDevice}}</p>
+                                                        <p class="text-white mb-0">
+                                                            New Devices
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-3 col-12 order-1 order-md-2 my-4 my-md-0 text-center">
+                                        <img src="assets/img/illustrations/card-website-analytics-1.png"
+                                            alt="Website Analytics" width="170" class="card-website-analytics-img" />
+                                    </div>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <!--/ Website Analytics -->
+                <!-- Sales Overview -->
+
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between">
+                                <small class="d-block mb-1 text-muted">Registration Overview</small>
+                            </div>
+                            <h4 class="card-title mb-1">{{newRegistration}}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="d-flex gap-2 align-items-center mb-2">
+                                        <span class="badge bg-label-info p-1 rounded">
+                                            <i class="ti ti-user-check ti-xs"></i>
+                                        </span>
+                                        <p class="mb-0">Approved</p>
+                                    </div>
+                                    <h5 class="mb-0 pt-1 text-nowrap">{{approvedRegistration}}</h5>
+                                </div>
+                                <div class="col-4">
+                                    <div class="divider divider-vertical">
+                                        <div class="divider-text">
+                                            <span class="badge-divider-bg bg-label-secondary">VS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <div class="d-flex gap-2 justify-content-end align-items-center mb-2">
+                                        <p class="mb-0">Auto Rejected</p>
+                                        <span class="badge bg-label-primary p-1 rounded"><i
+                                                class="ti ti-user-x ti-xs"></i></span>
+                                    </div>
+                                    <h5 class="mb-0 pt-1 text-nowrap ms-lg-n3 ms-xl-0">{{rejectedRegistration}}</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mt-4">
+                                <div class="progress w-100" style="height: 8px">
+                                    <div class="progress-bar bg-info" style="width: 50%" role="progressbar"
+                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%"
+                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Sales Overview -->
+                <!-- Revenue Generated -->
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-body pb-0">
+                            <div class="card-icon">
+                                <span class="badge bg-label-success rounded-pill p-2">
+                                    <i class="ti ti-credit-card ti-sm"></i>
+                                </span>
+                            </div>
+                            <h5 class="card-title mb-0 mt-2">{{newDevice}}</h5>
+                            <small>New Devices Using the App</small>
+                        </div>
+                        <svg id="SvgjsSvg1477" width="320" height="130" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
+                            class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)"
+                            style="background: transparent;">
+                            <g id="SvgjsG1479" class="apexcharts-inner apexcharts-graphical"
+                                transform="translate(0, 0)">
+                                <defs id="SvgjsDefs1478">
+                                    <clipPath id="gridRectMask51v3nkq2g">
+                                        <rect id="SvgjsRect1484" width="326" height="132" x="-3" y="-1" rx="0" ry="0"
+                                            opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff">
+                                        </rect>
+                                    </clipPath>
+                                    <clipPath id="forecastMask51v3nkq2g"></clipPath>
+                                    <clipPath id="nonForecastMask51v3nkq2g"></clipPath>
+                                    <clipPath id="gridRectMarkerMask51v3nkq2g">
+                                        <rect id="SvgjsRect1485" width="324" height="134" x="-2" y="-2" rx="0" ry="0"
+                                            opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff">
+                                        </rect>
+                                    </clipPath>
+                                    <linearGradient id="SvgjsLinearGradient1490" x1="0" y1="0" x2="0" y2="1">
+                                        <stop id="SvgjsStop1491" stop-opacity="0.6" stop-color="rgba(40,199,111,0.6)"
+                                            offset="0"></stop>
+                                        <stop id="SvgjsStop1492" stop-opacity="0.1" stop-color="rgba(212,244,226,0.1)"
+                                            offset="1"></stop>
+                                        <stop id="SvgjsStop1493" stop-opacity="0.1" stop-color="rgba(212,244,226,0.1)"
+                                            offset="1"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <line id="SvgjsLine1483" x1="0" y1="0" x2="0" y2="130" stroke="#b6b6b6"
+                                    stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0"
+                                    y="0" width="1" height="130" fill="#b1b9c4" filter="none" fill-opacity="0.9"
+                                    stroke-width="1"></line>
+                                <g id="SvgjsG1496" class="apexcharts-xaxis" transform="translate(0, 0)">
+                                    <g id="SvgjsG1497" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)">
+                                    </g>
+                                </g>
+                                <g id="SvgjsG1506" class="apexcharts-grid">
+                                    <g id="SvgjsG1507" class="apexcharts-gridlines-horizontal" style="display: none;">
+                                        <line id="SvgjsLine1509" x1="0" y1="0" x2="330" y2="0" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                        <line id="SvgjsLine1510" x1="0" y1="26" x2="330" y2="26" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                        <line id="SvgjsLine1511" x1="0" y1="52" x2="330" y2="52" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                        <line id="SvgjsLine1512" x1="0" y1="78" x2="330" y2="78" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                        <line id="SvgjsLine1513" x1="0" y1="104" x2="330" y2="104" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                        <line id="SvgjsLine1514" x1="0" y1="130" x2="330" y2="130" stroke="#e0e0e0"
+                                            stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline">
+                                        </line>
+                                    </g>
+                                    <g id="SvgjsG1508" class="apexcharts-gridlines-vertical" style="display: none;"></g>
+                                    <line id="SvgjsLine1516" x1="0" y1="130" x2="330" y2="130" stroke="transparent"
+                                        stroke-dasharray="0" stroke-linecap="butt"></line>
+                                    <line id="SvgjsLine1515" x1="0" y1="1" x2="0" y2="130" stroke="transparent"
+                                        stroke-dasharray="0" stroke-linecap="butt"></line>
+                                </g>
+                                <g id="SvgjsG1486" class="apexcharts-area-series apexcharts-plot-series">
+                                    <g id="SvgjsG1487" class="apexcharts-series" seriesName="seriesx1"
+                                        data:longestSeries="true" rel="1" data:realIndex="0">
+                                        <path id="SvgjsPath1494"
+                                            d="M 0 130L 0 104C 19.25 104 35.75 60.66666666666663 55 60.66666666666663C 74.25 60.66666666666663 90.75 78 110 78C 129.25 78 145.75 34.66666666666663 165 34.66666666666663C 184.25 34.66666666666663 200.75 69.33333333333331 220 69.33333333333331C 239.25 69.33333333333331 255.75 17.333333333333314 275 17.333333333333314C 294.25 17.333333333333314 310.75 34.66666666666663 330 34.66666666666663C 330 34.66666666666663 330 34.66666666666663 330 130M 330 34.66666666666663z"
+                                            fill="url(#SvgjsLinearGradient1490)" fill-opacity="1" stroke-opacity="1"
+                                            stroke-linecap="butt" stroke-width="0" stroke-dasharray="0"
+                                            class="apexcharts-area" index="0" clip-path="url(#gridRectMask51v3nkq2g)"
+                                            pathTo="M 0 130L 0 104C 19.25 104 35.75 60.66666666666663 55 60.66666666666663C 74.25 60.66666666666663 90.75 78 110 78C 129.25 78 145.75 34.66666666666663 165 34.66666666666663C 184.25 34.66666666666663 200.75 69.33333333333331 220 69.33333333333331C 239.25 69.33333333333331 255.75 17.333333333333314 275 17.333333333333314C 294.25 17.333333333333314 310.75 34.66666666666663 330 34.66666666666663C 330 34.66666666666663 330 34.66666666666663 330 130M 330 34.66666666666663z"
+                                            pathFrom="M -1 364L -1 364L 55 364L 110 364L 165 364L 220 364L 275 364L 330 364">
+                                        </path>
+                                        <path id="SvgjsPath1495"
+                                            d="M 0 104C 19.25 104 35.75 60.66666666666663 55 60.66666666666663C 74.25 60.66666666666663 90.75 78 110 78C 129.25 78 145.75 34.66666666666663 165 34.66666666666663C 184.25 34.66666666666663 200.75 69.33333333333331 220 69.33333333333331C 239.25 69.33333333333331 255.75 17.333333333333314 275 17.333333333333314C 294.25 17.333333333333314 310.75 34.66666666666663 330 34.66666666666663"
+                                            fill="none" fill-opacity="1" stroke="#28c76f" stroke-opacity="1"
+                                            stroke-linecap="butt" stroke-width="2" stroke-dasharray="0"
+                                            class="apexcharts-area" index="0" clip-path="url(#gridRectMask51v3nkq2g)"
+                                            pathTo="M 0 104C 19.25 104 35.75 60.66666666666663 55 60.66666666666663C 74.25 60.66666666666663 90.75 78 110 78C 129.25 78 145.75 34.66666666666663 165 34.66666666666663C 184.25 34.66666666666663 200.75 69.33333333333331 220 69.33333333333331C 239.25 69.33333333333331 255.75 17.333333333333314 275 17.333333333333314C 294.25 17.333333333333314 310.75 34.66666666666663 330 34.66666666666663"
+                                            pathFrom="M -1 364L -1 364L 55 364L 110 364L 165 364L 220 364L 275 364L 330 364">
+                                        </path>
+                                        <g id="SvgjsG1488" class="apexcharts-series-markers-wrap" data:realIndex="0">
+                                        </g>
+                                    </g>
+                                    <g id="SvgjsG1489" class="apexcharts-datalabels" data:realIndex="0"></g>
+                                </g>
+                                <line id="SvgjsLine1517" x1="0" y1="0" x2="330" y2="0" stroke="#b6b6b6"
+                                    stroke-dasharray="0" stroke-width="1" stroke-linecap="butt"
+                                    class="apexcharts-ycrosshairs"></line>
+                                <line id="SvgjsLine1518" x1="0" y1="0" x2="330" y2="0" stroke-dasharray="0"
+                                    stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
+                                <g id="SvgjsG1519" class="apexcharts-yaxis-annotations"></g>
+                                <g id="SvgjsG1520" class="apexcharts-xaxis-annotations"></g>
+                                <g id="SvgjsG1521" class="apexcharts-point-annotations"></g>
+                            </g>
+                            <rect id="SvgjsRect1482" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1"
+                                stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect>
+                            <g id="SvgjsG1505" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
+                            <g id="SvgjsG1480" class="apexcharts-annotations"></g>
+                        </svg>
+                    </div>
+                </div>
+                <!--/ Revenue Generated -->
+                <!-- Earning Reports -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-md-4 d-flex flex-column align-self-end">
+                                    <div class="d-flex gap-2 align-items-center mb-2 pb-1 flex-wrap">
+                                        <h1 class="mb-0">{{loginUsers}} User</h1>
+                                    </div>
+                                    <small class="text-muted">You informed of this week compared to last week</small>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <apx-chart #chart [series]="chart1Options.series" [chart]="chart1Options.chart"
+                                        [plotOptions]="chart1Options.plotOptions"
+                                        [dataLabels]="chart1Options.dataLabels" [xaxis]="chart1Options.xaxis"
+                                        [yaxis]="chart1Options.yaxis" [title]="chart1Options.title"></apx-chart>
+                                </div>
+                            </div>
+                            <div class="border rounded p-3 mt-2">
+                                <div class="row gap-4 gap-sm-0">
+                                    <div class="col-12 col-sm-4">
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <div class="badge rounded bg-label-primary p-1">
+                                                <i class="ti ti-users ti-sm"></i>
+                                            </div>
+                                            <h6 class="mb-0">Total Users</h6>
+                                        </div>
+                                        <h4 class="my-2 pt-1">{{newDevice}}</h4>
+                                        <div class="progress w-75" style="height: 4px">
+                                            <div class="progress-bar" role="progressbar" style="width: 65%"
+                                                aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <div class="badge rounded bg-label-info p-1"><i
+                                                    class="ti ti-brand-apple ti-sm"></i></div>
+                                            <h6 class="mb-0">IOS Users</h6>
+                                        </div>
+                                        <h4 class="my-2 pt-1">{{andriodIosDevices[1]}}</h4>
+                                        <div class="progress w-75" style="height: 4px">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <div class="badge rounded bg-label-danger p-1">
+                                                <i class="ti ti-brand-android ti-sm"></i>
+                                            </div>
+                                            <h6 class="mb-0">Android Users</h6>
+                                        </div>
+                                        <h4 class="my-2 pt-1">{{andriodIosDevices[0]}}</h4>
+                                        <div class="progress w-75" style="height: 4px">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 65%"
+                                                aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Earning Reports -->
+                <!-- Support Tracker -->
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
+                                    <div class="mt-lg-4 mt-lg-2 mb-lg-4 mb-2 pt-1">
+                                        <h1 class="mb-0">{{ls_Ticket}}</h1>
+                                        <p class="mb-0">Total Tickets</p>
+                                    </div>
+                                    <ul class="p-0 m-0">
+                                        <li class="d-flex gap-3 align-items-center mb-lg-3 pt-2 pb-1">
+                                            <div class="badge rounded bg-label-primary p-1"><i
+                                                    class="ti ti-ticket ti-sm"></i></div>
+                                            <div>
+                                                <h6 class="mb-0 text-nowrap">New Tickets</h6>
+                                                <small class="text-muted">{{ls_Ticket}}</small>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex gap-3 align-items-center mb-lg-3 pb-1">
+                                            <div class="badge rounded bg-label-info p-1">
+                                                <i class="ti ti-circle-check ti-sm"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0 text-nowrap">Feedback Tickets</h6>
+                                                <small class="text-muted">{{ls_Ticket}}</small>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex gap-3 align-items-center pb-1">
+                                            <div class="badge rounded bg-label-warning p-1"><i
+                                                    class="ti ti-clock ti-sm"></i></div>
+                                            <div>
+                                                <h6 class="mb-0 text-nowrap">Suggestions Tickets</h6>
+                                                <small class="text-muted">{{ls_Ticket}}</small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
+                                    <!-- <div id="chart02"></div> -->
+
+                                    <apx-chart #chart [series]="chart2Options.series" [chart]="chart2Options.chart"
+                                        [plotOptions]="chart2Options.plotOptions"
+                                        [dataLabels]="chart2Options.dataLabels" [xaxis]="chart2Options.xaxis"
+                                        [yaxis]="chart2Options.yaxis" [title]="chart2Options.title"></apx-chart>
+
+                                    <!-- <apx-line-chart #lineChart [series]="chart2Options.series" [chart]="chart2Options.chart"
+                                            [dataLabels]="chart2Options.dataLabels" [stroke]="chart2Options.stroke"
+                                            [title]="chart2Options.title" [grid]="chart2Options.grid"
+                                            [xaxis]="chart2Options.xaxis"></apx-line-chart> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Support Tracker -->
+
+            </div>
+        </div>
+        <!-- / Content -->
+    </div>
+    <!-- / Content -->
+    <div class="content-backdrop fade"></div>
+</div>

@@ -1,0 +1,4 @@
+<app-dynamictable *ngIf="isShow" [PageName]="'Get Participants'" [ColoumnOfName]="coloumnName" [RowOfData]="rows" [formFields]="formFields" 
+[TotalRecord]="totalrecord" [CurrentPages]="searchModel!.currentPage"(sortField)="onSort($event)" (id)="onDelete($event)" 
+(searching)="onSearch($event)" (currentpage)="onGetPage($event)" (SubmitForm)="onCreate($event)" (UpdateForm)="onEdit($event)"
+></app-dynamictable>

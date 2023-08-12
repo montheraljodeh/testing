@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('assets/vendor/fonts/fontawesome.css');
+@import url('assets/vendor/fonts/tabler-icons.css');
+@import url('assets/vendor/fonts/flag-icons.css');
+@import url('assets/vendor/css/rtl/core.css');
+@import url('assets/vendor/css/rtl/theme-default.css');
+@import url('assets/css/demo.css');
+@import url('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css');
+@import url('assets/vendor/libs/node-waves/node-waves.css');
+@import url('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css');
+@import url('assets/vendor/libs/typeahead-js/typeahead.css');
+@import url('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css');
+@import url('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css');
+@import url('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css');
+@import url('assets/Vendor/css/core.css');
+
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  animation: spin 1s infinite linear;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/*
+
+*/

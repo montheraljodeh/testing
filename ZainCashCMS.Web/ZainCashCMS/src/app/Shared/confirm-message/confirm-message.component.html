@@ -1,0 +1,30 @@
+
+    <div class="modal-header">
+      <h3 class="modal-title" id="myModalLabel160">{{Operation}} Record</h3>
+
+      <button
+      type="button"
+      class="btn-close btn-pinned"
+      data-bs-dismiss="modal"
+      aria-label="Close"></button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <p class="display-6">
+            Do You Want To Delete It
+        </p>
+
+        
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" (click)="isconfirmation(0)" >Cancel</button>
+  
+            <button type="submit" class="btn btn-success"  (click)="isconfirmation(1)"
+              rippleEffect>
+              Delete
+            </button>
+      
+  
+          </div>
+
+    </div>
+
